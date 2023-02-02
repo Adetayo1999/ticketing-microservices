@@ -10,5 +10,5 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT} ✨🚀`);
+  console.log(`Listening on port ${PORT} ✨🚀🎉`);
 });
