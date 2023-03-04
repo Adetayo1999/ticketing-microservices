@@ -3,6 +3,7 @@ import cors from "cors";
 import logger from "morgan";
 import { getAllRoutes } from "./routes";
 import { errorHandler } from "./middlewares/error-handler";
+import connectDB from "./database";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,6 +22,11 @@ app.use((_, response, next) => {
 
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT} ✨🧨`);
-});
+const startServer = async () => {
+  await connectDB();
+  app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT} ✨🧨`);
+  });
+};
+
+startServer();
