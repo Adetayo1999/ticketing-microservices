@@ -1,5 +1,5 @@
 import Joi from "joi";
-import { NewUser } from "@types";
+import { NewUser } from "../types";
 
 export const validateNewUser = (
   user: NewUser
