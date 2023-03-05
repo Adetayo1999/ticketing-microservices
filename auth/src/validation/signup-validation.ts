@@ -5,7 +5,6 @@ export const validateNewUser = (
   user: NewUser
 ): Joi.ValidationResult<NewUser> => {
   const schema = Joi.object({
-    username: Joi.string().required(),
     firstName: Joi.string().required(),
     lastName: Joi.string().required(),
     email: Joi.string().required().email(),
