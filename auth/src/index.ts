@@ -4,6 +4,7 @@ import logger from "morgan";
 import { getAllRoutes } from "./routes";
 import { errorHandler } from "./middlewares/error-handler";
 import connectDB from "./database";
+import { CONFIG_KEYS } from "./config";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -23,6 +24,10 @@ app.use((_, response, next) => {
 app.use(errorHandler);
 
 const startServer = async () => {
+  if (Object.values(CONFIG_KEYS).some((env) => env === undefined)) {
+    throw new Error("Invalid Configuration");
+  }
+
   await connectDB();
   app.listen(PORT, () => {
     console.log(`Listening on port ${PORT} ✨🧨`);
