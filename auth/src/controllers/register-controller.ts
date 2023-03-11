@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from "express";
 import Register from "../services/register-service";
 import { validateNewUser } from "../validation/signup-validation";
 import { createToken } from "../utils/token";
+import { HTTP_CODES } from "../config/http-code";
 
 export const registerUserController = async (
   request: Request,
@@ -14,7 +15,7 @@ export const registerUserController = async (
     if (error) throw new RequestValidationError(error);
     const newUser = (await Register.register(request.body)).toJSON();
     const access_token = createToken({ email: newUser.email });
-    response.status(201).send({
+    response.status(HTTP_CODES.CREATED).send({
       message: "Registration Successful",
       data: {
         user: newUser,

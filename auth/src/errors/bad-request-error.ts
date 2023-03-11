@@ -1,7 +1,8 @@
+import { HTTP_CODES } from "../config/http-code";
 import BaseCustomError from "./custom-error";
 
 export class BadRequestError extends BaseCustomError {
-  statusCode = 400;
+  statusCode = HTTP_CODES.BAD_REQUEST;
 
   constructor(public message: string) {
     super(message);
