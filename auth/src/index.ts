@@ -4,7 +4,8 @@ import logger from "morgan";
 import { getAllRoutes } from "./routes";
 import { errorHandler } from "./middlewares/error-handler";
 import connectDB from "./database";
-import { CONFIG_KEYS } from "./config";
+import { CONFIG_KEYS } from "./common/config";
+import { BadRequestError } from "./errors/bad-request-error";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,8 +18,8 @@ app.use(cors());
 
 getAllRoutes(app);
 
-app.use((_, response, next) => {
-  response.status(404).send({ message: "Invalid Route" });
+app.use((_, __, next) => {
+  next(new BadRequestError("Invalid Route"));
 });
 
 app.use(errorHandler);

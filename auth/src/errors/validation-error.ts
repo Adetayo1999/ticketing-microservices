@@ -1,6 +1,6 @@
 import { ValidationError } from "joi";
 import BaseCustomError from "./custom-error";
-import { HTTP_CODES } from "../config/http-code";
+import { HTTP_CODES } from "../common/constants/http-code";
 
 class RequestValidationError extends BaseCustomError {
   statusCode = HTTP_CODES.BAD_REQUEST;

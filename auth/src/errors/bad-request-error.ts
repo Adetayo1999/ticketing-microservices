@@ -1,4 +1,4 @@
-import { HTTP_CODES } from "../config/http-code";
+import { HTTP_CODES } from "../common/constants/http-code";
 import BaseCustomError from "./custom-error";
 
 export class BadRequestError extends BaseCustomError {

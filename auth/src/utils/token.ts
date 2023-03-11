@@ -1,4 +1,4 @@
-import { CONFIG_KEYS } from "../config";
+import { CONFIG_KEYS } from "../common/config";
 import { sign } from "jsonwebtoken";
 
 export const createToken = (payload: any) => {
