@@ -2,7 +2,7 @@ apiVersion: skaffold/v4beta1
 kind: Config
 build:
   artifacts:
-    - image: omotomiwa/auth-service
+    - image: us.gcr.io/filmonk-app/auth
       context: auth
       sync:
         manual:
