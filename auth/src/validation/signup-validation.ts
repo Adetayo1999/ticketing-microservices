@@ -10,9 +10,11 @@ export const validateNewUser = (
     email: Joi.string().required().email(),
     password: Joi.string()
       .required()
-      .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
-      .messages({
-        "string.pattern.base": `"password" should contain at least an uppercase, lowercase and should be between 3 - 30 characters`,
+      .ruleset.min(8)
+      .regex(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)
+      .rule({
+        message:
+          "Password must be strong. At least one upper case alphabet. At least one lower case alphabet. At least one digit. At least one special character. Minimum eight in length",
       }),
   });
 
