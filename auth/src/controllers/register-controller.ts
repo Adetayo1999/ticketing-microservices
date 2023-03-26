@@ -16,6 +16,11 @@ export const registerUserController = async (
     if (error) throw new RequestValidationError(error);
     const user = (await Register.register(request.body)).toJSON();
     const access_token = createToken({ email: user.email });
+
+    request.session = {
+      jwt: access_token,
+    };
+
     sendResponse("Registration Successful", { user, access_token })(
       response,
       HTTP_CODES.CREATED

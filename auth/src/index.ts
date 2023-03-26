@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import logger from "morgan";
+import cookieSession from "cookie-session";
 import { getAllRoutes } from "./routes";
 import { errorHandler } from "./middlewares/error-handler";
 import connectDB from "./database";
@@ -11,10 +12,17 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // middlewares
+app.set("trust proxy", true);
 app.use(express.json());
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use(
+  cookieSession({
+    secure: true,
+    signed: false,
+  })
+);
 
 getAllRoutes(app);
 

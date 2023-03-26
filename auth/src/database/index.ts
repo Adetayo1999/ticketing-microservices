@@ -20,8 +20,8 @@ export const sequelize = new Sequelize(
 const connectDB = async () => {
   try {
     await sequelize.authenticate();
-    console.log("Posgres DB Started 🎈");
-    await sequelize.sync();
+    console.log("Posgres DB Started Now 🎈");
+    await sequelize.sync({ force: true });
   } catch (error) {
     console.log(error);
   }
