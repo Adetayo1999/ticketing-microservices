@@ -1,8 +1,15 @@
 apiVersion: skaffold/v4beta1
 kind: Config
+manifests:
+  rawYaml:
+    - ./infra/k8s/*
+# deploy:
+#   kubectl:
+#     manifests:
+#       - ./infra/k8s/*
 build:
   artifacts:
-    - image: us.gcr.io/filmonk-app/auth
+    - image: omotomiwa/auth
       context: auth
       sync:
         manual:
@@ -10,10 +17,7 @@ build:
             dest: .
       docker:
         dockerfile: Dockerfile
-  googleCloudBuild:
-    projectId: filmonk-app
-manifests:
-  rawYaml:
-    - ./infra/k8s/*
-deploy:
-  kubectl: {}
+  # googleCloudBuild:
+  #   projectId: filmonk-app
+# deploy:
+#   kubectl: {}

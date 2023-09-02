@@ -1,10 +1,9 @@
-import RequestValidationError from "../errors/validation-error";
 import { Request, Response, NextFunction } from "express";
-import Register from "../services/register-service";
-import { validateNewUser } from "../validation/signup-validation";
-import { createToken } from "../utils/token";
+import { createToken } from "../common/helpers/token";
 import { HTTP_CODES } from "../common/constants/http-code";
 import { sendResponse } from "../common/helpers/createResponse";
+import UserService from "../services/user-service";
+import { BadRequestError } from "../errors/bad-request-error";
 
 export const registerUserController = async (
   request: Request,
@@ -12,16 +11,19 @@ export const registerUserController = async (
   next: NextFunction
 ) => {
   try {
-    const { error } = await validateNewUser(request.body);
-    if (error) throw new RequestValidationError(error);
-    const user = (await Register.register(request.body)).toJSON();
-    const access_token = createToken({ email: user.email });
+    const existingUser = await UserService.getUserByEmail(request.body.email);
+
+    if (existingUser) throw new BadRequestError("Email in use");
+
+    const newUser = await UserService.createUser(request.body);
+
+    const access_token = createToken({ email: newUser.email, id: newUser.id });
 
     request.session = {
       jwt: access_token,
     };
 
-    sendResponse("Registration Successful", { user, access_token })(
+    sendResponse("Registration Successful", { user: newUser, access_token })(
       response,
       HTTP_CODES.CREATED
     );

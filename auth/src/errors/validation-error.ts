@@ -11,9 +11,10 @@ class RequestValidationError extends BaseCustomError {
   }
 
   serializeError() {
-    return this.errors.details.map((error) => ({
-      reason: error.message,
-    }));
+    return {
+      status: RequestValidationError.error,
+      message: this.errors.details[0].message,
+    };
   }
 }
 

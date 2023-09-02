@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth-container
-          image: us.gcr.io/filmonk-app/auth
+          image: omotomiwa/auth
           env:
             - name: JWT_SECRET
               valueFrom:

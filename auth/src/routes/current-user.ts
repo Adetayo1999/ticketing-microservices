@@ -1,9 +1,9 @@
 import { Router } from "express";
+import { authorizationHandler } from "../middlewares/authorization-handler";
+import { userController } from "../controllers/user-controller";
 
 const router = Router();
 
-router.get("/users/currentuser", (_, response) => {
-  response.send("Hello User");
-});
+router.get("/user", authorizationHandler, userController);
 
 export { router as currentUserRouter };
