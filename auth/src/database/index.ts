@@ -1,11 +1,12 @@
+import { CONFIG_KEYS } from "../common/config";
 import { Sequelize } from "sequelize";
 
 export const sequelize = new Sequelize(
-  "appdb",
-  "appuser",
-  "strongpasswordapp",
+  CONFIG_KEYS.POSTGRES_DB,
+  CONFIG_KEYS.POSTGRES_USER,
+  CONFIG_KEYS.POSTGRES_PASSWORD,
   {
-    host: "auth-postgres-srv",
+    host: CONFIG_KEYS.POSTGRES_HOST,
     dialect: "postgres",
     pool: {
       max: 15,
