@@ -21,6 +21,26 @@ spec:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_SECRET
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: auth-microservice-postgres
+                  key: POSTGRES_HOST
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: auth-microservice-postgres
+                  key: POSTGRES_DB
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: auth-microservice-postgres
+                  key: POSTGRES_PASSWORD
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: auth-microservice-postgres
+                  key: POSTGRES_USER
 ---
 apiVersion: v1
 kind: Service
