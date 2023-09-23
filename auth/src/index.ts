@@ -6,7 +6,7 @@ async function main() {
   if (Object.values(CONFIG_KEYS).some((env) => env === undefined)) {
     throw new Error("Invalid Environment Variables");
   }
-  const PORT = process.env.PORT || 3000;
+  const PORT = process.env.PORT || 4000;
 
   await connectDB();
 
