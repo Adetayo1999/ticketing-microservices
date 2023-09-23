@@ -57,6 +57,7 @@ User.prototype.toJSON = function () {
 };
 
 User.beforeSave(async (user) => {
+  // TODO: Remove this logic to prevent raw password from showing in the database logs
   if (user.changed("password")) {
     const hashedPassword = await hashPassword(user.password);
     user.password = hashedPassword;
