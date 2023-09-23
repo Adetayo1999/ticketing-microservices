@@ -17,6 +17,14 @@ build:
             dest: .
       docker:
         dockerfile: Dockerfile
+    - image: omotomiwa/client
+      context: client
+      sync:
+        manual:
+          - src: src/**
+            dest: .
+      docker:
+        dockerfile: Dockerfile
   # googleCloudBuild:
   #   projectId: filmonk-app
 # deploy:
