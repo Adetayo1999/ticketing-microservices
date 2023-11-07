@@ -10,6 +10,7 @@
     "test": "DOTENV_CONFIG_PATH=.test.env jest"
   },
   "dependencies": {
+    "@fingreat/common": "^1.0.4",
     "bcrypt": "^5.1.0",
     "cookie-session": "^2.0.0",
     "cors": "^2.8.5",

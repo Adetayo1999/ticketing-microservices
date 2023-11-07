@@ -4,8 +4,7 @@ import cors from "cors";
 import logger from "morgan";
 import cookieSession from "cookie-session";
 import { getAllRoutes } from "../routes";
-import { errorHandler } from "../middlewares/error-handler";
-import { BadRequestError } from "../errors/bad-request-error";
+import { errorHandler, BadRequestError } from "@fingreat/common";
 
 export const createServer = async () => {
   const app = express();

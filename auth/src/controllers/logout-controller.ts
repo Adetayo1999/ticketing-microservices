@@ -1,5 +1,5 @@
-import { HTTP_CODES } from "../common/constants/http-code";
-import { sendResponse } from "../common/helpers/createResponse";
+import { HTTP_CODES } from "@fingreat/common/build/consts/http";
+import { sendResponse } from "@fingreat/common/build/helpers/response";
 import { NextFunction, Request, Response } from "express";
 
 export const logoutController = (

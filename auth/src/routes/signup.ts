@@ -1,4 +1,4 @@
-import { validationHandler } from "../middlewares/validation-handler";
+import { validationHandler } from "@fingreat/common";
 import { registerUserController } from "../controllers/register-controller";
 import { Router } from "express";
 import { validateNewUser } from "../validation/signup-validation";

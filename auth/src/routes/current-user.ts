@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { authorizationHandler } from "../middlewares/authorization-handler";
+import { authorizationHandler } from "@fingreat/common";
 import { userController } from "../controllers/user-controller";
 
 const router = Router();

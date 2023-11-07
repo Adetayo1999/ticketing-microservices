@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import { createToken } from "../common/helpers/token";
-import { HTTP_CODES } from "../common/constants/http-code";
-import { sendResponse } from "../common/helpers/createResponse";
+import { HTTP_CODES } from "@fingreat/common/build/consts/http";
+import { sendResponse } from "@fingreat/common/build/helpers/response";
 import UserService from "../services/user-service";
-import { BadRequestError } from "../errors/bad-request-error";
+import { BadRequestError } from "@fingreat/common";
 import { comparePassword } from "../common/helpers/password";
 
 export const loginUserController = async (
