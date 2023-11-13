@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ticket-postgres-secret
+  labels:
+    app: ticket-postgres
+data:
+  POSTGRES_DB: ticketdb
+  POSTGRES_USER: appuser
+  POSTGRES_PASSWORD: password

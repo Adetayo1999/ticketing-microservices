@@ -17,6 +17,14 @@ build:
             dest: .
       docker:
         dockerfile: Dockerfile
+    - image: omotomiwa/ticket
+      context: ticket
+      sync:
+        manual:
+          - src: src/**
+            dest: .
+      docker:
+        dockerfile: Dockerfile
     - image: omotomiwa/client
       context: client
       sync:
